@@ -1,0 +1,5 @@
+How to use the "find and replace string to reggietext" program
+
+Requirements: Python 2.7
+Modify the "input_string" variable to be whatever you want. Make sure a string is inserted into the "input_string" variable, otherwise the code won't work.
+Then, paste the code into Reggie! Level Editor. Make sure you are using a text tileset, otherwise the level in Reggie will look weird.
