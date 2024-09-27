@@ -94,6 +94,18 @@ arrowsigns = {
     "7" : "5",
 }
 
+piranhaplants = {
+    "67" : "68",
+    "68" : "67",
+    "71" : "72",
+    "72" : "71",
+}
+
+bubbles = {
+    "2" : "3",
+    "3" : "2",
+}
+
 pa0 = {
     "67" : "68",
     "68" : "67",
@@ -105,25 +117,42 @@ pa0 = {
     "89" : "88",
 }
 
-pa1 =  { #Pa1_chika, underground
+pa1 =  { #Sakura Village 1
     "00" : "0",
     "01" : "1",
     "02" : "2",
-    "03" : "4",
-    "04" : "3",
-    "05" : "6",
-    "06" : "5",
-    "07" : "8",
-    "08" : "7",
-    "09" : "10",
-    "13" : "14",
-    "14" : "13",
+    "03" : "3",
+    "05" : "5",
+    "06" : "7",
+    "07" : "6",
+    "08" : "8",
+    "09" : "9",
+    "10" : "11",
+    "11" : "10",
     "15" : "16",
     "16" : "15",
     "17" : "18",
     "18" : "17",
     "19" : "20",
-    "20" : "19", 
+    "20" : "19",
+    "21" : "22",
+    "22" : "21",
+    "25" : "26",
+    "26" : "25",
+    "63" : "65",
+    "65" : "63",
+    "86" : "87",
+    "87" : "86",
+    "88" : "89",
+    "89" : "88",
+    "90" : "91",
+    "91" : "90",
+    "92" : "93",
+    "93" : "92",
+    "96" : "97",
+    "97" : "96",
+    "98" : "99",
+    "99" : "98",
 }
 
 
@@ -171,45 +200,62 @@ pa2 = { #Pa2_doukutu, wavy rocks thingy
     "40" : "36",
 }
 
-
-
-pa3 = { #pyramid
-    "00" : "1",
-    "01" : "0",
+pa3 = { #Pa3_rail
+    "00" : "0",
+    "01" : "1",
     "02" : "2",
     "03" : "3",
-    "04" : "4",
-    "05" : "5",
-    "06" : "6",
-    "07" : "7",
-    "08" : "8",
-    "09" : "9",
-    "00" : "1",
-    "12" : "13",
-    "13" : "12",
+    "04" : "5",
+    "05" : "4",
+    "06" : "7",
+    "07" : "6",
+    "08" : "9",
+    "09" : "8",
+    "10" : "9",
+    "13" : "14",
+    "14" : "13",
     "15" : "16",
     "16" : "15",
     "17" : "18",
     "18" : "17",
     "19" : "20",
     "20" : "19",
-    "22" : "23",
-    "23" : "22",
-    "24" : "25",
-    "25" : "24",
-    "22" : "23",
-    "41" : "42",
-    "42" : "41",
-    "43" : "44",
-    "44" : "43",
-    "45" : "46",
-    "46" : "45",
-    "47" : "48",
-    "48" : "47",
-    "49" : "50",
-    "50" : "49",
-    "51" : "52",
-    "52" : "51",
+    "23" : "24",
+    "24" : "23",
+    "25" : "27",
+    "26" : "28",
+    "27" : "25",
+    "28" : "26",
+}
+
+pa13digits = {
+    "100" : "101",
+    "101" : "100",
+    "102" : "103",
+    "103" : "102",
+    "104" : "4",
+    "105" : "107",
+    "107" : "105",
+    "105" : "107",
+    "107" : "105",
+    "108" : "109",
+    "109" : "108",
+    "110" : "111",
+    "111" : "110",
+    "112" : "113",
+    "113" : "112",
+    "114" : "115",
+    "115" : "114",
+}
+
+pa23digits = {
+    "104" : "4",
+    "105" : "107",
+    "107" : "105",
+    "112" : "113",
+    "113" : "112",
+    "114" : "115",
+    "115" : "114",
 }
 
 
@@ -220,8 +266,6 @@ zonecoordmessages = ["X coordinate of first zone? ", "X coordinate of second zon
 def r(self):
     object_typenumberlist = []
     stringlist = []
-    #zonesizelist = [] #for storing the zone size list
-    #zonecoordlist = []
     object_status = []
     tileset_objects = []
     object_typenumberlist_pa0 = []
@@ -247,30 +291,11 @@ def r(self):
     sprite9number = []
     sprite10number = []
     sprite11number = []
-    '''if not self.startswith("ReggieClip"):
-        print "Why bother?"
-    else:
-        zones = int(raw_input("Number of zones in this area? "))
-        if zones > 6:
-            print zonesizemessages[6]
-        else:
-            for i in range(0, zones):
-                zonecoord = int(raw_input(zonecoordmessages[i]))
-                zonesize = int(raw_input(zonesizemessages[i]))
-                zonesizelist.append(zonesize)
-                zonecoordlist.append(zonecoord)
-                '''
-    #xzonecoord = input("Top left of zone x coordinate? ")
-    #yzonecoord = input("Top left of zone y coordinate? ")
-    #zonesize = input("X zone size? ")
-    xzonecoord = 0
+    xzonecoord = 5000
     zonesize = 9999
-    reggieclip = "ReggieClip"
-    percent = "%"
-    xpos = 0 #A holdover from the previous program.
-    ypos = 0
+    risingsun = True
+    
     reggiesplitlist = self.split('|')
-    #print reggiesplitlist
     for i in reggiesplitlist:
         thenumberineed = i.split(':')
         if len (thenumberineed) < 8:
@@ -298,37 +323,31 @@ def r(self):
             sprite9number.append(thenumberineed[8])
             sprite10number.append(thenumberineed[9])
             sprite11number.append(thenumberineed[10])
-    #print xsize_objects
-    #print tileset_objects
     object_typenumberlist_pa0 = tileset_objects[:]
     object_typenumberlist_pa1 = tileset_objects[:]
     object_typenumberlist_pa2 = tileset_objects[:]
     object_typenumberlist_pa3 = tileset_objects[:]
-    #print object_typenumberlist_pa1
     for i in range(len(tileset_objects)):
         if tileset_type[i] == '1':
-            object_typenumberlist_pa1[i] = find_and_replace_numbers(tileset_objects[i], pa1)
-            #object_typenumberlist_pa1.append(j)
+            if len(object_typenumberlist_pa1[i]) == 3:
+                object_typenumberlist_pa1[i] = find_and_replace_numbers(tileset_objects[i], pa13digits)
+            elif (risingsun == True) and (object_typenumberlist_pa1[i] == '04'):
+                object_typenumberlist_pa1[i] = '104'
+            else:
+                object_typenumberlist_pa1[i] = find_and_replace_numbers(tileset_objects[i], pa1)
         elif tileset_type[i] == '2':
-            object_typenumberlist_pa2[i] = find_and_replace_numbers(tileset_objects[i], pa2)
-            #object_typenumberlist_pa2.append(j)
+            if len(object_typenumberlist_pa2[i]) == 3:
+                object_typenumberlist_pa2[i] = find_and_replace_numbers(tileset_objects[i], pa23digits)
+            elif (risingsun == True) and (object_typenumberlist_pa2[i] == '04'):
+                object_typenumberlist_pa1[i] = '104'
+            else:
+                object_typenumberlist_pa2[i] = find_and_replace_numbers(tileset_objects[i], pa2)
         elif tileset_type[i] == '0':
             object_typenumberlist_pa0[i] = find_and_replace_numbers(tileset_objects[i], pa0)
-            #object_typenumberlist_pa0.append(j)
         elif tileset_type[i] == '3':
             object_typenumberlist_pa3[i] = find_and_replace_numbers(tileset_objects[i], pa3)
-            #object_typenumberlist_pa3.append(tileset_objects[i]) #for Pa3 stuff
         else:
             pass
-            #object_typenumberlist.append(tileset_objects[i]) #for Pa3 stuff
-    #print object_typenumberlist_pa1
-    #print tileset_objects
-    #print object_typenumberlist
-    #print tileset_type
-    #print object_typenumberlist_pa0
-    #print object_typenumberlist #Getting the numbers we need to put them back in the reggie string
-    #print sprite1number
-    #for i in xlist_objects: #x coord stuff
     for i in range(len(xlist_objects)):
         j = (int(xlist_objects[i])) * -16 #the magic formula we need to properly mirror the program.
         if tileset_objects[i] == 0 or 1 or 2: #specific to Lava Lair only, will change
@@ -340,7 +359,7 @@ def r(self):
     #print sprite3number
     for i in range(len(sprite3number)):
         j = (int(sprite3number[i])) * -1 #the magic formula we need to properly mirror the program.
-        sprite_position_new = (j + zonesize + (xzonecoord) - 32) #more magic formula stuff
+        sprite_position_new = (j + zonesize + (xzonecoord)) #more magic formula stuff
         if int(sprite2number[i]) in range(64,73) or 263: #for sprites such as Piranha Plants
             sprite_position_new = sprite_position_new - 32
         if int(sprite2number[i])  == 32: #for Star Coins
@@ -350,24 +369,17 @@ def r(self):
         if int(sprite2number[i])  == 173 or 342: #for Giant Floating Logs and Munchers
             sprite_position_new = sprite_position_new + 16
         sprite3numbernew.append(str(sprite_position_new))
-        #print type(sprite2number[i])
+
+        #various mirroring settings
+        if sprite2number[i] == '161':
+            sprite10number[i] = find_and_replace_numbers(sprite10number[i], bubbles) #reversing the direction of bubbles
         if sprite2number[i] == '310':
-            sprite10number[i] = find_and_replace_numbers(sprite10number[i], arrowsigns)
+            sprite10number[i] = find_and_replace_numbers(sprite10number[i], arrowsigns) #reversing the direction of arrow signs
+        if (sprite2number[i] == '67' or '68' or '71' or '72') and (len(sprite2number[i]) == 2):
+            sprite2number[i] = find_and_replace_numbers(sprite2number[i], piranhaplants) #reversing the direction of pirahna plants
         else:
             pass
-    #print sprite3numbernew
-    #print len(object_typenumberlist)
-    #print len(tileset_type)
-    '''print len(tileset_objects)
-    print len(object_typenumberlist_pa0)
-    print len(object_typenumberlist_pa1)
-    print len(object_typenumberlist_pa2)
-    print len(object_typenumberlist_pa3)
-    print len(layer_list)
-    print len(xlist_objects2)
-    print len(ylist_objects)
-    print len(xsize_objects)
-    print len(ysize_objects)'''
+
 
     for i in range(len(tileset_objects)): #i is the position of the item in the list.
         if tileset_type[i] == '0':
@@ -390,16 +402,8 @@ def r(self):
     final_string =  "ReggieClip" + reggiestring + "|%" #The finished product! Heck yeah!
     #return final_string
     easygui.textbox("Please paste into Reggie Level Editor", "Result", final_string)
-    '''r = Tk()
-    r.withdraw()
-    r.clipboard_clear()
-    r.clipboard_append(final_string)
-    r.update() # now it stays on the clipboard after the window is closed'''
-'''elif object_typenumberlist[i] == 105:
-            string = "|0:2:26:2:631:66:3:1|0:2:27:2:630:66:1:1|0:2:28:2:634:66:1:1|0:2:22:2:630:67:1:4|0:2:29:2:630:71:1:1|0:2:25:2:631:71:3:1|0:2:21:2:634:67:1:4|0:2:30:2:634:71:1:1|"
-        elif object_typenumberlist[i] == 106:
-            string = "|0:2:26:2:638:66:1:1|0:2:27:2:637:66:1:1|0:2:28:2:639:66:1:1|0:2:22:2:637:67:1:4|0:2:29:2:637:71:1:1|0:2:25:2:638:71:1:1|0:2:21:2:639:67:1:4|0:2:30:2:639:71:1:1|"'''
-            
+
+
 # Perform the find and replace operation
 # result = find_and_replace_string(input_string, replacements)
 # Print the modified string
